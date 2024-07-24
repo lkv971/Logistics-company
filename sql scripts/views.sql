@@ -10,10 +10,18 @@ FROM Vehicles
 GO
 
 CREATE VIEW VehicleAverageYear
-AS SELECT Plate AS Vehicle,
+AS
+SELECT Plate AS Vehicle,
 AVG(YEAR(GETDATE()) - Year) AS AverageAge
 FROM Vehicles
 GROUP BY Plate
+;
+GO
+
+ALTER VIEW VehicleAverageYear
+AS
+SELECT AVG(YEAR(GETDATE()) - Year) AS AverageAge
+FROM Vehicles
 ;
 GO
 
