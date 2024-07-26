@@ -29,8 +29,8 @@ This folder includes the raw data used for analysis:
 
 ### 3. Power BI Reports and Dashboards
 This folder contains Power BI reports and dashboards for data visualization:
-- **Logistics Analysis.pbix**: The Power BI report file for logistics analysis.
-- **Logistics Analysis.pdf**: A PDF version of the logistics analysis report.
+- **Logistics Analytics.pbix**: The Power BI report file for logistics analysis.
+- **Logistics Analytics.pdf**: A PDF version of the logistics analysis report.
 - **Screenshots**: Visual snapshots of the Power BI dashboards:
   - **July 2019 Financial Dashboard**: A financial performance overview for July 2019.
   - **Semi-Trailers Performance 2019 Dashboard**: Performance analysis of semi-trailers for 2019.
@@ -57,8 +57,8 @@ This repository provides a complete framework for analyzing logistics operations
    - Utilize the scripts in `alter_tables`, `views`, `triggers`, `functions`, `procedures`, and `indexes` to maintain and optimize the database.
 
 3. **Data Analysis**:
-   - Open the `Logistics Analysis.pbix` file in Power BI Desktop to explore the detailed analytics report.
-   - Refer to the `Logistics Analysis.pdf` for a static, printable version of the report.
+   - Open the `Logistics Analytics.pbix` file in Power BI Desktop to explore the detailed analytics report.
+   - Refer to the `Logistics Analytics.pdf` for a static, printable version of the report.
 
 4. **Visualizations**:
    - Review the screenshots in the `Screenshots` folder to get a quick overview of the financial and performance dashboards.
