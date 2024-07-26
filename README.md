@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository is dedicated to the data analytics of a company's freight operations. It encompasses detailed information about drivers, customers, costs, and vehicles. The repository contains SQL scripts and Power BI reports designed for comprehensive logistics data analysis.
+This repository is dedicated to the data analytics of a company's freight operations. It encompasses detailed information about drivers, customers, costs, and vehicles. The repository contains T-SQL scripts and a Power BI report designed for comprehensive logistics data analysis.
 
 ## Repository Structure
 
