@@ -54,7 +54,8 @@ REFERENCES Date(Date)
 ;
 GO
 
-ALTER TABLE Costs ADD LitersPer100Km DECIMAL(10,2)
+ALTER TABLE Costs
+ADD LitersPer100Km DECIMAL(10,2)
 ;
 GO
 
@@ -103,5 +104,12 @@ FROM Targets
 WHERE Vehicles.TruckType =
 Targets.TruckType
 )
+;
+GO
+
+ALTER TABLE Vehicles
+ADD CONSTRAINT fk_Vehicles_Targets
+FOREIGN KEY (TargetID)
+REFERENCES Targets(TargetID)
 ;
 GO
