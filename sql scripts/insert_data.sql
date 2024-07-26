@@ -61,3 +61,22 @@ FORMAT = 'CSV'
 )
 ;
 GO
+
+INSERT INTO Targets (
+TruckType,
+Target
+)
+SELECT DISTINCT TruckType,
+CASE
+	WHEN TruckType = 'TRAILER' THEN 30
+	WHEN TruckType = 'SEMI-TRAILER' THEN 30
+	WHEN TruckType = 'BOX' THEN 20
+	WHEN TruckType = 'TRACTOR' THEN 25
+END AS Target
+FROM Vehicles
+;
+GO
+
+
+
+	

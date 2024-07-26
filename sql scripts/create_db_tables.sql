@@ -150,3 +150,16 @@ NewDriver VARCHAR(50)
 )
 ;
 GO
+
+CREATE TABLE Targets (
+TargetID INT IDENTITY(1,1) PRIMARY KEY,
+TruckType VARCHAR(30),
+Target INT
+)
+;
+GO
+
+
+
+
+
