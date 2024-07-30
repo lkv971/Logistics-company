@@ -2,40 +2,32 @@ USE LogisticsDB
 ;
 GO
 
-CREATE VIEW VehicleCount
-AS 
-SELECT COUNT(TruckID) AS VehicleCount
-FROM Vehicles
-;
-GO
 
-CREATE VIEW VehicleAverageYear
+CREATE VIEW TripDataPerVehicle2018
 AS
-SELECT Plate AS Vehicle,
-AVG(YEAR(GETDATE()) - Year) AS AverageAge
-FROM Vehicles
-GROUP BY Plate
-;
-GO
-
-ALTER VIEW VehicleAverageYear
-AS
-SELECT AVG(YEAR(GETDATE()) - Year) AS AverageAge
-FROM Vehicles
-;
-GO
-
-CREATE VIEW TripDataPerVehicle
-AS
-SELECT YEAR(c.Date) AS Year,
-v.Plate AS Vehicle,
+SELECT v.Plate AS Vehicle,
 SUM(c.KmTravelled)AS TotalKm,
 AVG(c.KmTravelled) AS AverageKm,
 AVG(c.Litersper100Km) AS FuelConsuptionPer100Km
 FROM Vehicles v
 INNER JOIN Costs c
 ON v.TruckID = c.TruckID 
-GROUP BY YEAR(c.Date), v.Plate
+WHERE YEAR(c.Date) =2018
+GROUP BY v.Plate
+;
+GO
+
+CREATE VIEW TripDataPerVehicle2019
+AS
+SELECT v.Plate AS Vehicle,
+SUM(c.KmTravelled)AS TotalKm,
+AVG(c.KmTravelled) AS AverageKm,
+AVG(c.Litersper100Km) AS FuelConsuptionPer100Km
+FROM Vehicles v
+INNER JOIN Costs c
+ON v.TruckID = c.TruckID 
+WHERE YEAR(c.Date) =2019
+GROUP BY v.Plate
 ;
 GO
 
@@ -75,64 +67,67 @@ GROUP BY v.Plate
 ;
 GO
 
-CREATE VIEW TruckTypeCount
-AS
-SELECT TruckType,
-COUNT(TruckType) AS VehicleCount
-FROM Vehicles
-GROUP BY TruckType
-;
-GO
 
-CREATE VIEW TripDataPerTruckType
+CREATE VIEW TripDataPerTruckType2018
 AS
-SELECT YEAR(c.Date) AS Year,
-v.TruckType,
+SELECT v.TruckType,
 SUM(c.KmTravelled)AS TotalKm,
 AVG(c.KmTravelled) AS AverageKm,
 AVG(c.Litersper100Km) AS FuelConsuptionPer100Km
 FROM Vehicles v
 INNER JOIN Costs c
-ON v.TruckID = c.TruckID 
-GROUP BY YEAR(c.Date), v.TruckType
+ON v.TruckID = c.TruckID
+WHERE YEAR(c.Date) =2018
+GROUP BY v.TruckType
 ;
 GO
 
-CREATE VIEW TrailerTypeCount
+CREATE VIEW TripDataPerTruckType2019
 AS
-SELECT TrailersType,
-COUNT(TrailersType) AS VehicleCount
-FROM Vehicles
-GROUP BY TrailersType
-;
-GO
-
-CREATE VIEW TripDataPerTrailersType
-AS
-SELECT YEAR(c.Date) AS Year,
-v.TrailersType,
+SELECT v.TruckType,
 SUM(c.KmTravelled)AS TotalKm,
 AVG(c.KmTravelled) AS AverageKm,
 AVG(c.Litersper100Km) AS FuelConsuptionPer100Km
 FROM Vehicles v
 INNER JOIN Costs c
-ON v.TruckID = c.TruckID 
-GROUP BY YEAR(c.Date), v.TrailersType
+ON v.TruckID = c.TruckID
+WHERE YEAR(c.Date) = 2019
+GROUP BY v.TruckType
 ;
 GO
 
-CREATE VIEW DriverCount
+CREATE VIEW TripDataPerTrailersType2018
 AS
-SELECT COUNT(DriverID) AS DriverCount
-FROM Drivers
-WHERE DriverID != 1
+SELECT v.TrailersType,
+SUM(c.KmTravelled)AS TotalKm,
+AVG(c.KmTravelled) AS AverageKm,
+AVG(c.Litersper100Km) AS FuelConsuptionPer100Km
+FROM Vehicles v
+INNER JOIN Costs c
+ON v.TruckID = c.TruckID
+WHERE YEAR(c.Date) = 2018
+GROUP BY v.TrailersType
 ;
 GO
 
-CREATE VIEW TripDataPerDriver
+CREATE VIEW TripDataPerTrailersType2019
 AS
-SELECT YEAR(c.Date) AS Year,
-d.Driver,
+SELECT v.TrailersType,
+SUM(c.KmTravelled)AS TotalKm,
+AVG(c.KmTravelled) AS AverageKm,
+AVG(c.Litersper100Km) AS FuelConsuptionPer100Km
+FROM Vehicles v
+INNER JOIN Costs c
+ON v.TruckID = c.TruckID
+WHERE YEAR(c.Date) = 2019
+GROUP BY v.TrailersType
+;
+GO
+
+
+CREATE VIEW TripDataPerDriver2018
+AS
+SELECT d.Driver,
 SUM(c.KmTravelled)AS TotalKm,
 AVG(c.KmTravelled) AS AverageKm,
 AVG(c.Litersper100Km) AS FuelConsuptionPer100Km
@@ -140,7 +135,23 @@ FROM Vehicles v
 INNER JOIN Costs c ON v.TruckID = c.TruckID
 INNER JOIN Drivers d ON d.DriverID = c.DriverID
 WHERE d.DriverID != 1
-GROUP BY YEAR(c.Date), d.Driver
+AND YEAR(c.Date) = 2018
+GROUP BY d.Driver
+;
+GO
+
+CREATE VIEW TripDataPerDriver2019
+AS
+SELECT d.Driver,
+SUM(c.KmTravelled)AS TotalKm,
+AVG(c.KmTravelled) AS AverageKm,
+AVG(c.Litersper100Km) AS FuelConsuptionPer100Km
+FROM Vehicles v
+INNER JOIN Costs c ON v.TruckID = c.TruckID
+INNER JOIN Drivers d ON d.DriverID = c.DriverID
+WHERE d.DriverID != 1
+AND YEAR(c.Date) = 2019
+GROUP BY d.Driver
 ;
 GO
 
@@ -180,14 +191,8 @@ GROUP BY d.Driver
 ;
 GO
 
-CREATE VIEW CustomerCount
-AS 
-SELECT COUNT(CustomerID) AS CustomerCount
-FROM Customers
-;
-GO
 
-CREATE VIEW CustomerFreightDetailsPerState
+CREATE VIEW CustomerFreightDetailsPerState2018
 AS
 SELECT cu.State,
 AVG(f.WeightKg) AS GoodsWeight,
@@ -195,6 +200,20 @@ AVG(f.GoodsValue) AS GoodsValue
 FROM Customers cu
 INNER JOIN Freight f
 ON cu.CustomerID = f.CustomerID
+WHERE YEAR(f.Date) = 2018
+GROUP BY cu.State
+;
+GO
+
+CREATE VIEW CustomerFreightDetailsPerState2019
+AS
+SELECT cu.State,
+AVG(f.WeightKg) AS GoodsWeight,
+AVG(f.GoodsValue) AS GoodsValue
+FROM Customers cu
+INNER JOIN Freight f
+ON cu.CustomerID = f.CustomerID
+WHERE YEAR(f.Date) = 2019
 GROUP BY cu.State
 ;
 GO
