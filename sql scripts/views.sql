@@ -2,7 +2,6 @@ USE LogisticsDB
 ;
 GO
 
-
 CREATE VIEW TripDataPerVehicle2018
 AS
 SELECT v.Plate AS Vehicle,
@@ -191,7 +190,6 @@ GROUP BY d.Driver
 ;
 GO
 
-
 CREATE VIEW CustomerFreightDetailsPerState2018
 AS
 SELECT cu.State,
@@ -218,7 +216,16 @@ GROUP BY cu.State
 ;
 GO
 
-
+CREATE VIEW DriverCountPerTruckType
+AS
+SELECT v.TruckType,
+COUNT(DISTINCT c.DriverID) AS DriverCount
+FROM Vehicles v
+INNER JOIN Costs c
+ON v.TruckID = c.TruckID
+GROUP BY v.TruckType
+;
+GO
 
 
 
