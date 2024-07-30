@@ -91,16 +91,6 @@ UPDATE Vehicles
 SET TargetID  = (
 SELECT TargetID
 FROM Targets
-WHERE TruckType =
-'SEMI-TRAILER'
- )
-;
-GO
-
-UPDATE Vehicles
-SET TargetID  = (
-SELECT TargetID
-FROM Targets
 WHERE Vehicles.TruckType =
 Targets.TruckType
 )
