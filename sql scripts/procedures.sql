@@ -90,3 +90,15 @@ WHERE TruckID = @TruckID
 END
 ;
 GO
+
+CREATE PROCEDURE UpdateTruckPlate
+@TruckID INT,
+@Plate VARCHAR(15)
+AS
+BEGIN
+UPDATE Vehicles
+SET Plate = @Plate
+WHERE TruckID = @TruckID
+END
+;
+GO
