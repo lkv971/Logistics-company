@@ -1,6 +1,84 @@
 USE LogisticsDB;
 GO
 
+CREATE PROCEDURE InsertCosts
+@Date DATE,
+@TruckID INT,
+@DriverID INT,
+@KmTravelled INT,
+@LitersConsumption DECIMAL(10,2),
+@FuelCost FLOAT,
+@MaintenanceCost DECIMAL(10,2),
+@FixedCost DECIMAL(10,2)
+AS 
+BEGIN
+INSERT INTO Costs (
+Date,
+TruckID,
+DriverID,
+KmTravelled,
+LitersConsumption,
+FuelCost,
+MaintenanceCost,
+FixedCost)
+VALUES (
+@Date,
+@TruckID,
+@DriverID,
+@KmTravelled,
+@LitersConsumption,
+@FuelCost,
+@MaintenanceCost,
+@FixedCost
+)
+SELECT SCOPE_IDENTITY() AS NewCostInput
+END
+;
+GO
+
+CREATE PROCEDURE InsertFreight
+@Date DATE,
+@CustomerID INT,
+@TruckID INT,
+@InvoiceNumber INT,
+@FreightID VARCHAR(50),
+@City VARCHAR(50),
+@Revenue DECIMAL(10,2),
+@WeightKg DECIMAL(10,2),
+@WeightCubic DECIMAL(10,2),
+@GoodsValue DECIMAL(10,2)
+AS 
+BEGIN
+INSERT INTO Freight (
+Date,
+CustomerID,
+TruckID,
+InvoiceNumber,
+FreightID,
+City,
+Revenue,
+WeightKg,
+WeightCubic,
+GoodsValue
+)
+VALUES (
+@Date,
+@CustomerID,
+@TruckID,
+@InvoiceNumber,
+@FreightID,
+@City,
+@Revenue,
+@WeightKg,
+@WeightCubic,
+@GoodsValue
+)
+SELECT SCOPE_IDENTITY() AS NewFreightInput
+END
+;
+GO
+
+
 CREATE PROCEDURE InsertTrucks
 @Plate VARCHAR(20),
 @Brand CHAR(2),

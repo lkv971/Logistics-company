@@ -103,6 +103,54 @@ BEGIN
 	;
 END
 
+CREATE TABLE CostsAudit (
+CostAuditID INT IDENTITY(1,1) PRIMARY KEY,
+TruckID INT,
+DriverID INT,
+ChangeType VARCHAR(20),
+ChangeDate DATETIME,
+OldDate DATE,
+NewDate DATE,
+OldKmTravelled INT,
+NewKmTravelled INT,
+OldLitersConsumption DECIMAL(10,2),
+NewLitersConsumption DECIMAL(10,2),
+OldFuelCost FLOAT,
+NewFuelCost FLOAT,
+OldMaintenanceCost DECIMAL(10,2),
+NewMaintenanceCost DECIMAL(10,2),
+OldFixedCost DECIMAL(10,2),
+NewFixedCost DECIMAL(10,2)
+)
+;
+GO
+
+CREATE TABLE FreightAudit (
+FreightAuditID INT IDENTITY(1,1) PRIMARY KEY,
+CustomerID INT,
+TruckID INT,
+ChangeType VARCHAR(20),
+ChangeDate DATETIME,
+OldDate DATE,
+NewDate DATE,
+OldInvoiceNumber INT,
+NewInvoiceNumber INT,
+OldFreightID VARCHAR(50),
+NewFreightID VARCHAR(50),
+OldCity VARCHAR(50),
+NewCity VARCHAR(50),
+OldRevenue DECIMAL(10,2),
+NewRevenue DECIMAL(10,2),
+OldWeightKg DECIMAL(10,2),
+NewWeightKg DECIMAL(10,2),
+OldWeightCubic DECIMAL(10,2),
+NewWeightCubic DECIMAL(10,2),
+OldGoodsValue DECIMAL(10,2),
+NewGoodsValue DECIMAL(10,2)
+)
+;
+GO
+
 CREATE TABLE CustomerAudit (
 CustomerAuditID INT PRIMARY KEY,
 CustomerID INT,
