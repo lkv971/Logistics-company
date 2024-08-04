@@ -102,3 +102,16 @@ The database for this project is designed using SQL Server, with scripts provide
 - Review the screenshots in the `Screenshots` folder to get a quick overview of the financial and performance dashboards.
 
 
+### Database Maintenance
+
+- Utilize the scripts in `alter_tables`, `views`, `triggers`, `functions`, `procedures`, and `indexes` to maintain and optimize the database.
+
+### Data Analysis
+
+- Open the `Logistics Analytics.pbix` file in Power BI Desktop to explore the detailed analytics report.
+- Refer to the `Logistics Analytics.pdf` for a static, printable version of the report.
+
+### Visualizations
+
+- Review the screenshots in the `Screenshots` folder to get a quick overview of the financial and performance dashboards.
+
