@@ -55,6 +55,14 @@ This folder contains Power BI reports and dashboards for data visualization:
 This folder contains schema-related documentation and diagrams:
 - **Snowflake Schema Diagram**: Diagram representing the snowflake schema used for organizing the data.
 
+### 6. SQL Server Jobs 
+
+This folder includes SQL scripts used for automating routine database tasks:
+- **daily_differential_backup_logistics.sql**: Script for performing daily differential backups of the logistics database.
+- **daily_insert_logistics_freight.sql**: Script for daily data inserts into the freight-related tables.
+- **monthly_full_backup_logistics.sql**: Script for performing monthly full backups of the logistics database.
+- **monthly_insert_logistics_costs.sql**: Script for monthly data inserts into the costs-related tables.
+
 ## Detailed Description
 
 This repository provides a complete framework for analyzing logistics operations, from raw data ingestion to advanced data visualization. It includes:
@@ -115,3 +123,9 @@ The database for this project is designed using SQL Server, with scripts provide
 
 - Review the screenshots in the `Screenshots` folder to get a quick overview of the financial and performance dashboards.
 
+### SQL Server Jobs
+
+- **Daily Differential Backup**: The `daily_differential_backup_logistics.sql` script automates daily differential backups, capturing changes since the last full backup.
+- **Daily Data Insert**: The `daily_insert_logistics_freight.sql` script automates the daily insertion of freight-related data into the relevant tables.
+- **Monthly Full Backup**: The `monthly_full_backup_logistics.sql` script creates a full backup of the database each month, preserving the entire database state.
+- **Monthly Data Insert**: The `monthly_insert_logistics_costs.sql` script automates the insertion of cost-related data into the relevant tables on a monthly basis.
