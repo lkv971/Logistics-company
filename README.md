@@ -1,22 +1,18 @@
-# Logistics Data Analytics Repository
+# **Logistics Data Analytics Repository**
 
-## Overview
+## **Overview**  
+This repository is dedicated to the data analytics of a company's freight operations. It encompasses detailed information about drivers, customers, costs, and vehicles. The repository includes T-SQL scripts, a database SQL file, Power BI reports, a transformation notebook, and a data pipeline that copies data to a lakehouse on Microsoft Fabric for comprehensive logistics data analysis.
 
-This repository is dedicated to the data analytics of a company's freight operations. It encompasses detailed information about drivers, customers, costs, and vehicles. The repository contains T-SQL scripts, a database SQL file, and a Power BI report designed for comprehensive logistics data analysis.
+## **Table of Contents**  
+1. [Repository Structure](#repository-structure)  
+2. [Detailed Description](#detailed-description)  
+3. [Database and Tools](#database-and-tools)  
+4. [How to Use](#how-to-use)
 
-## Table of Contents
-
-- [Repository Structure](#repository-structure)
-- [Detailed Description](#detailed-description)
-- [Database and Tools](#database-and-tools)
-- [How to Use](#how-to-use)
-
-## Repository Structure
-
+## **Repository Structure**  
 The repository is organized into the following folders and files:
 
-### 1. SQL Scripts
-
+### **1. RDBMS Scripts**  
 This folder contains all SQL scripts necessary for database setup and maintenance:
 - **alter_tables**: Scripts for altering existing tables.
 - **views**: SQL views for data aggregation and simplification.
@@ -27,13 +23,11 @@ This folder contains all SQL scripts necessary for database setup and maintenanc
 - **insert_data**: Scripts to insert raw data into tables.
 - **indexes**: Scripts for creating indexes to optimize database performance.
 
-### 2. Database
-
+### **2. Database**  
 This folder contains the SQL file for creating the database:
 - **logistics_database.sql**: Complete SQL script to create and populate the logistics database.
 
-### 3. Raw Data
-
+### **3. Raw Data**  
 This folder includes the raw data used for analysis:
 - **costs**: Data related to freight costs.
 - **freight**: Freight details and records.
@@ -41,8 +35,7 @@ This folder includes the raw data used for analysis:
 - **drivers**: Details about the drivers.
 - **customers**: Customer data.
 
-### 4. Power BI Reports and Dashboards
-
+### **4. Power BI Reports and Dashboards**  
 This folder contains Power BI reports and dashboards for data visualization:
 - **Logistics Analytics.pbix**: The Power BI report file for logistics analysis.
 - **Logistics Analytics.pdf**: A PDF version of the logistics analysis report.
@@ -50,81 +43,67 @@ This folder contains Power BI reports and dashboards for data visualization:
   - **July 2019 Financial Dashboard**: A financial performance overview for July 2019.
   - **Semi-Trailers Performance 2019 Dashboard**: Performance analysis of semi-trailers for 2019.
 
-### 5. Schema
-
+### **5. Schema**  
 This folder contains schema-related documentation and diagrams:
 - **Snowflake Schema Diagram**: Diagram representing the snowflake schema used for organizing the data.
 
-### 6. SQL Server Jobs 
-
+### **6. SQL Server Jobs**  
 This folder includes SQL scripts used for automating routine database tasks:
 - **daily_differential_backup_logistics.sql**: Script for performing daily differential backups of the logistics database.
 - **daily_insert_logistics_freight.sql**: Script for daily data inserts into the freight-related tables.
 - **monthly_full_backup_logistics.sql**: Script for performing monthly full backups of the logistics database.
 - **monthly_insert_logistics_costs.sql**: Script for monthly data inserts into the costs-related tables.
 
-## Detailed Description
+### **7. Pipeline Diagrams**  
+This folder contains screenshots and diagrams of data pipelines:
+- **logistics_pipeline.png**: A diagram showing the data pipeline that moves data from SQL Server to the Lakehouse in Microsoft Fabric.
 
+### **8. Transformation Notebooks**  
+This folder contains notebooks used for data transformation:
+- **transformation_logistics.ipynb**: Notebook used for transforming the data within Microsoft Fabric.
+
+## **Detailed Description**  
 This repository provides a complete framework for analyzing logistics operations, from raw data ingestion to advanced data visualization. It includes:
 
 - **Database Management**: SQL scripts for creating and maintaining database structures, including tables, views, triggers, and functions.
 - **Data Ingestion**: Scripts to insert and manage raw data related to freight operations.
 - **Data Analysis**: Power BI reports that offer insights into the operational and financial performance of the logistics company.
 - **Visualization**: Dashboards that provide an at-a-glance view of key performance indicators (KPIs) and metrics.
+- **Data Transformation**: A notebook for transforming raw data before analysis, integrated into a data pipeline on Microsoft Fabric.
 
-## Database and Tools
-
-### Database
-
+## **Database and Tools**  
+### **Database**  
 The database for this project is designed using SQL Server, with scripts provided to create and populate the necessary tables and structures for logistics data analysis.
 
-### Tools Used
-
+### **Tools Used**  
 - **SQL Server Management Studio (SSMS)**: Used for managing the SQL Server database, executing T-SQL scripts, and performing database maintenance tasks.
 - **Power BI**: Utilized for creating interactive and visually appealing reports and dashboards, providing insights into logistics data.
+- **Microsoft Fabric (Synapse Data Engineering)**: Used to create a data pipeline and transform the data in a Lakehouse.
 
-## How to Use
+## **How to Use**
 
-### Set Up the Database
+### **Set Up the Database**
+#### **Prerequisites:**
+- SQL Server 2016 or higher.
+- SQL Server Management Studio (SSMS) installed.
+- Power BI Desktop installed.
 
-1. **Prerequisites**:
-   - SQL Server 2016 or higher.
-   - SQL Server Management Studio (SSMS) installed.
-   - Power BI Desktop installed.
+#### **Instructions:**
+1. Open the `logistics_database.sql` file in SQL Server Management Studio (SSMS).
+2. Execute the script to create the database, tables, and insert the data.
 
-2. **Instructions**:
-   - Open the `logistics_database.sql` file in SQL Server Management Studio (SSMS).
-   - Execute the script to create the database, tables, and insert the data.
+### **Database Maintenance**  
+Utilize the scripts in `alter_tables`, `views`, `triggers`, `functions`, `procedures`, and `indexes` to maintain and optimize the database.
 
-### Database Maintenance
+### **Data Transformation and Analysis**  
+1. Use `transformation_logistics.ipynb` in Microsoft Fabric to transform the data.
+2. Open the `Logistics Analytics.pbix` file in Power BI Desktop to explore the detailed analytics report.
+3. Refer to the `Logistics Analytics.pdf` for a static, printable version of the report.
 
-- Utilize the scripts in `alter_tables`, `views`, `triggers`, `functions`, `procedures`, and `indexes` to maintain and optimize the database.
+### **Visualizations**  
+Review the screenshots in the `Screenshots` folder to get a quick overview of the financial and performance dashboards as well as the pipeline flow.
 
-### Data Analysis
-
-- Open the `Logistics Analytics.pbix` file in Power BI Desktop to explore the detailed analytics report.
-- Refer to the `Logistics Analytics.pdf` for a static, printable version of the report.
-
-### Visualizations
-
-- Review the screenshots in the `Screenshots` folder to get a quick overview of the financial and performance dashboards.
-
-
-### Database Maintenance
-
-- Utilize the scripts in `alter_tables`, `views`, `triggers`, `functions`, `procedures`, and `indexes` to maintain and optimize the database.
-
-### Data Analysis
-
-- Open the `Logistics Analytics.pbix` file in Power BI Desktop to explore the detailed analytics report.
-- Refer to the `Logistics Analytics.pdf` for a static, printable version of the report.
-
-### Visualizations
-
-- Review the screenshots in the `Screenshots` folder to get a quick overview of the financial and performance dashboards.
-
-### SQL Server Jobs
-
+### **SQL Server Jobs**  
 - **Daily Differential Backup**: The `daily_differential_backup_logistics.sql` script automates daily differential backups, capturing changes since the last full backup.
 - **Daily Data Insert**: The `daily_insert_logistics_freight.sql` script automates the daily insertion of freight-related data into the relevant tables.
 - **Monthly Full Backup**: The `monthly_full_backup_logistics.sql` script creates a full backup of the database each month, preserving the entire database state.
